@@ -1,0 +1,3631 @@
+
+/* =========================================
+   TWENTY ONE PETALS
+   Main Entrance Screen
+========================================= */
+
+:root {
+    --pink: #e8b7cb;
+    --pink-dark: #bd819f;
+    --pink-light: #fff4f7;
+    --pink-soft: #f9e5ed;
+
+    --lavender: #c8b6dc;
+    --lavender-dark: #9680b4;
+    --lavender-light: #f0eafa;
+
+    --cream: #fffaf5;
+    --paper: #fffdfb;
+
+    --text-primary: #604b5d;
+    --text-secondary: #917b8c;
+
+    --border: #f0dce6;
+    --shadow: rgba(132, 91, 116, 0.13);
+
+    --heading-font: 'Cormorant Garamond', serif;
+    --hand-font: 'Caveat', cursive;
+    --body-font: 'Nunito', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    font-family: var(--body-font);
+    color: var(--text-primary);
+    background: var(--pink-light);
+    overflow-x: hidden;
+}
+
+/* =========================================
+   BACKGROUND
+========================================= */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+
+    background-color: #fff4f7;
+
+    background-image:
+        linear-gradient(45deg, rgba(226,184,205,.18) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(226,184,205,.18) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(226,184,205,.18) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(226,184,205,.18) 75%);
+
+    background-size: 38px 38px;
+
+    background-position:
+        0 0,
+        0 19px,
+        19px -19px,
+        -19px 0;
+}
+
+#app {
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* =========================================
+   ENTRANCE SCREEN
+========================================= */
+
+.entrance-screen {
+    min-height: 100vh;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 75px 24px 35px;
+
+    position: relative;
+    overflow: hidden;
+}
+
+/* =========================================
+   THEME TOGGLE
+========================================= */
+
+.theme-toggle {
+    position: fixed;
+    top: 24px;
+    right: 26px;
+
+    width: 46px;
+    height: 46px;
+
+    border: 1px solid var(--border);
+    border-radius: 50%;
+
+    background: var(--paper);
+    color: var(--text-primary);
+
+    font-size: 21px;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 5px 18px var(--shadow);
+
+    z-index: 20;
+
+    transition: transform .3s ease, background .3s ease;
+}
+
+.theme-toggle:hover {
+    transform: rotate(15deg) scale(1.08);
+}
+
+/* =========================================
+   INVITATION CARD
+========================================= */
+
+.invitation-card {
+    width: min(100%, 560px);
+
+    position: relative;
+
+    background: var(--paper);
+
+    border: 1px solid var(--border);
+    border-radius: 8px;
+
+    padding: 46px 48px 25px;
+
+    text-align: center;
+
+    box-shadow:
+        0 20px 55px rgba(132, 91, 116, 0.10),
+        0 3px 12px rgba(132, 91, 116, 0.06);
+
+    animation: cardAppear 1s ease both;
+}
+
+.invitation-card::before {
+    content: "";
+    position: absolute;
+
+    inset: 10px;
+
+    border: 1px solid rgba(207, 163, 186, 0.55);
+
+    pointer-events: none;
+}
+
+/* =========================================
+   TOP LABEL
+========================================= */
+
+.card-top-label {
+    font-family: var(--body-font);
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+    color: var(--pink-dark);
+}
+
+/* =========================================
+   FLOWER DECORATION
+========================================= */
+
+.sunflower-decoration {
+    width: 85px;
+    height: 85px;
+
+    margin: 28px auto 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #fff5e7;
+
+    border: 1px solid #f1dfc7;
+
+    box-shadow: 0 5px 18px rgba(180, 146, 95, .10);
+}
+
+.flower-symbol {
+    font-size: 55px;
+    line-height: 1;
+
+    color: #d8a64e;
+
+    animation: gentleFlower 5s ease-in-out infinite;
+}
+
+/* =========================================
+   INVITATION CONTENT
+========================================= */
+
+.invitation-content {
+    margin-top: 15px;
+}
+
+.eyebrow {
+    font-family: var(--hand-font);
+    font-size: 21px;
+
+    color: var(--lavender-dark);
+
+    margin-bottom: 7px;
+}
+
+.invitation-content h1 {
+    font-family: var(--heading-font);
+
+    font-size: clamp(48px, 8vw, 65px);
+    font-weight: 500;
+
+    line-height: 1.1;
+
+    color: var(--pink-dark);
+}
+
+.small-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    margin: 22px auto;
+}
+
+.small-divider span:not(.divider-flower) {
+    width: 48px;
+    height: 1px;
+
+    background: var(--border);
+}
+
+.divider-flower {
+    color: var(--lavender-dark);
+    font-size: 15px;
+}
+
+.invitation-content h2 {
+    max-width: 400px;
+
+    margin: 0 auto;
+
+    font-family: var(--heading-font);
+
+    font-size: 29px;
+    font-weight: 500;
+
+    line-height: 1.35;
+
+    color: var(--text-primary);
+}
+
+.invitation-description {
+    margin-top: 13px;
+
+    font-size: 13px;
+    color: var(--text-secondary);
+
+    line-height: 1.7;
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.invitation-actions {
+    min-height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 15px;
+
+    margin-top: 30px;
+}
+
+.yes-button,
+.no-button {
+    min-height: 46px;
+
+    padding: 0 24px;
+
+    border-radius: 30px;
+
+    font-family: var(--body-font);
+    font-size: 13px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        background .25s ease;
+}
+
+.yes-button {
+    background: linear-gradient(
+        135deg,
+        #dca9c0,
+        #bd8da9
+    );
+
+    color: white;
+
+    border: none;
+
+    box-shadow: 0 6px 16px rgba(189, 129, 159, .25);
+}
+
+.yes-button:hover {
+    transform: translateY(-3px);
+
+    box-shadow: 0 9px 20px rgba(189, 129, 159, .35);
+}
+
+.button-arrow {
+    margin-left: 8px;
+    font-size: 16px;
+}
+
+.no-button {
+    background: transparent;
+
+    color: var(--text-secondary);
+
+    border: 1px solid var(--border);
+}
+
+.no-button:hover {
+    background: var(--pink-soft);
+}
+
+/* =========================================
+   PLAYFUL MESSAGE
+========================================= */
+
+.playful-message {
+    min-height: 25px;
+
+    margin-top: 10px;
+
+    font-family: var(--hand-font);
+    font-size: 19px;
+
+    color: var(--lavender-dark);
+}
+
+/* =========================================
+   CARD FOOTER
+========================================= */
+
+.card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 35px;
+    padding-top: 17px;
+
+    border-top: 1px solid var(--border);
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    color: var(--text-secondary);
+}
+
+/* =========================================
+   FLOATING DECORATIVE FLOWERS
+========================================= */
+
+.decorative-flower {
+    position: absolute;
+
+    color: rgba(199, 151, 184, .55);
+
+    font-size: 42px;
+
+    pointer-events: none;
+
+    animation: floatingFlower 6s ease-in-out infinite;
+}
+
+.flower-one {
+    top: 13%;
+    left: 13%;
+}
+
+.flower-two {
+    top: 20%;
+    right: 14%;
+
+    font-size: 29px;
+    animation-delay: 1s;
+}
+
+.flower-three {
+    bottom: 18%;
+    left: 17%;
+
+    font-size: 34px;
+    animation-delay: 2s;
+}
+
+.flower-four {
+    bottom: 14%;
+    right: 15%;
+
+    font-size: 45px;
+    animation-delay: 3s;
+}
+
+/* =========================================
+   ENTRANCE FOOTER
+========================================= */
+
+.entrance-footer {
+    margin-top: 27px;
+
+    font-family: var(--hand-font);
+    font-size: 20px;
+
+    color: var(--text-secondary);
+
+    text-align: center;
+}
+
+/* =========================================
+   DARK MODE
+========================================= */
+
+body.dark-mode {
+    --pink-light: #28212c;
+    --paper: #39303e;
+
+    --text-primary: #f0dfec;
+    --text-secondary: #c0a9bd;
+
+    --border: #574455;
+
+    --pink-dark: #d4a3bd;
+    --lavender-dark: #c0a8d9;
+
+    --shadow: rgba(0, 0, 0, .25);
+
+    background: var(--pink-light);
+}
+
+body.dark-mode::before {
+    background-color: #28212c;
+
+    background-image:
+        linear-gradient(45deg, rgba(160,120,157,.08) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(160,120,157,.08) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(160,120,157,.08) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(160,120,157,.08) 75%);
+}
+
+body.dark-mode .sunflower-decoration {
+    background: #463849;
+    border-color: #64516a;
+}
+
+body.dark-mode .flower-symbol {
+    color: #e0bb72;
+}
+
+body.dark-mode .no-button:hover {
+    background: #493849;
+}
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(22px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes gentleFlower {
+    0%, 100% {
+        transform: rotate(-5deg);
+    }
+
+    50% {
+        transform: rotate(5deg);
+    }
+}
+
+@keyframes floatingFlower {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+/* =========================================
+   TABLET RESPONSIVENESS
+========================================= */
+
+@media (max-width: 768px) {
+
+    .entrance-screen {
+        padding: 85px 20px 30px;
+    }
+
+    .invitation-card {
+        padding: 40px 30px 23px;
+    }
+
+    .flower-one {
+        left: 5%;
+    }
+
+    .flower-two {
+        right: 5%;
+    }
+
+    .flower-three {
+        left: 6%;
+    }
+
+    .flower-four {
+        right: 5%;
+    }
+}
+
+/* =========================================
+   MOBILE RESPONSIVENESS
+========================================= */
+
+@media (max-width: 480px) {
+
+    .entrance-screen {
+        padding: 85px 17px 25px;
+    }
+
+    .theme-toggle {
+        top: 17px;
+        right: 17px;
+
+        width: 42px;
+        height: 42px;
+    }
+
+    .invitation-card {
+        padding: 37px 21px 22px;
+    }
+
+    .card-top-label {
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
+
+    .sunflower-decoration {
+        width: 72px;
+        height: 72px;
+
+        margin-top: 25px;
+    }
+
+    .flower-symbol {
+        font-size: 46px;
+    }
+
+    .invitation-content h1 {
+        font-size: 51px;
+    }
+
+    .invitation-content h2 {
+        font-size: 25px;
+    }
+
+    .invitation-description {
+        font-size: 12px;
+    }
+
+    .invitation-actions {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .yes-button,
+    .no-button {
+        width: 100%;
+        max-width: 230px;
+    }
+
+    .playful-message {
+        font-size: 17px;
+    }
+
+    .card-footer {
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    .decorative-flower {
+        font-size: 25px;
+        opacity: .6;
+    }
+
+    .entrance-footer {
+        font-size: 17px;
+        max-width: 280px;
+    }
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+}
+
+/* =========================================
+   BIRTHDAY WELCOME SCREEN
+========================================= */
+
+[hidden] {
+    display: none !important;
+}
+
+.birthday-screen {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100svh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 90px 24px 60px;
+    background:
+        radial-gradient(ellipse at 15% 15%, rgba(235, 199, 181, 0.25), transparent 38%),
+        radial-gradient(ellipse at 85% 85%, rgba(195, 174, 213, 0.25), transparent 40%),
+        var(--background, #fff7f8);
+    animation: birthdayAppear 1s ease both;
+}
+
+.birthday-content {
+    position: relative;
+    z-index: 2;
+    width: min(100%, 760px);
+    text-align: center;
+    padding: 45px 25px;
+}
+
+.birthday-eyebrow {
+    margin: 0 0 30px;
+    color: var(--accent, #a66f89);
+    font-family: "Nunito", sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 3px;
+}
+
+.birthday-flower {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 92px;
+    height: 92px;
+    margin: 0 auto 27px;
+    border: 1px solid rgba(190, 145, 164, 0.35);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.55);
+    color: #bd8b42;
+    font-size: 53px;
+    box-shadow: 0 12px 35px rgba(160, 110, 135, 0.12);
+    animation: flowerFloat 4s ease-in-out infinite;
+}
+
+.birthday-small-heading {
+    margin: 0 0 13px;
+    color: var(--muted, #987d8b);
+    font-family: "Caveat", cursive;
+    font-size: 25px;
+}
+
+.birthday-title {
+    margin: 0;
+    color: var(--text, #51483f);
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(42px, 7vw, 76px);
+    font-weight: 500;
+    line-height: 1.05;
+}
+
+.birthday-title span {
+    display: block;
+    margin-top: 5px;
+    color: var(--accent, #a66f89);
+    font-style: italic;
+}
+
+.birthday-description {
+    max-width: 420px;
+    margin: 24px auto 0;
+    color: var(--muted, #897b7e);
+    font-family: "Nunito", sans-serif;
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+.birthday-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    width: min(220px, 65%);
+    margin: 31px auto;
+}
+
+.birthday-divider span:not(.divider-flower) {
+    flex: 1;
+    height: 1px;
+    background: var(--border, #ead8df);
+}
+
+.divider-flower {
+    color: #bd8b42;
+    font-size: 19px;
+}
+
+.birthday-instruction {
+    margin: 0 0 20px;
+    color: var(--muted, #897b7e);
+    font-family: "Caveat", cursive;
+    font-size: 23px;
+}
+
+.explore-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 13px;
+    min-height: 53px;
+    padding: 0 27px;
+    border: 1px solid transparent;
+    border-radius: 50px;
+    background: var(--accent, #a66f89);
+    color: #fff;
+    font-family: "Nunito", sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    box-shadow: 0 9px 24px rgba(166, 111, 137, 0.22);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.explore-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 13px 28px rgba(166, 111, 137, 0.3);
+}
+
+.explore-button:focus-visible {
+    outline: 3px solid var(--accent, #a66f89);
+    outline-offset: 4px;
+}
+
+.explore-button span {
+    font-size: 18px;
+}
+
+.birthday-signature {
+    margin: 32px 0 0;
+    color: var(--muted, #a18e96);
+    font-family: "Caveat", cursive;
+    font-size: 20px;
+}
+
+.welcome-decoration {
+    position: absolute;
+    z-index: 1;
+    color: rgba(189, 139, 66, 0.22);
+    font-size: clamp(90px, 15vw, 180px);
+    pointer-events: none;
+    animation: flowerFloat 6s ease-in-out infinite;
+}
+
+.decoration-left {
+    left: 4%;
+    top: 15%;
+    transform: rotate(-18deg);
+}
+
+.decoration-right {
+    right: 4%;
+    bottom: 12%;
+    transform: rotate(18deg);
+    animation-delay: -3s;
+}
+
+/* DARK MODE */
+
+body.dark-mode .birthday-screen {
+    background:
+        radial-gradient(ellipse at 15% 15%, rgba(166, 111, 137, 0.16), transparent 40%),
+        radial-gradient(ellipse at 85% 85%, rgba(125, 105, 155, 0.18), transparent 40%),
+        var(--background, #211d25);
+}
+
+body.dark-mode .birthday-flower {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(220, 190, 205, 0.2);
+}
+
+body.dark-mode .birthday-title {
+    color: var(--text, #f4e9ee);
+}
+
+body.dark-mode .birthday-description,
+body.dark-mode .birthday-instruction,
+body.dark-mode .birthday-signature {
+    color: var(--muted, #c0aeba);
+}
+
+body.dark-mode .birthday-eyebrow,
+body.dark-mode .birthday-title span {
+    color: var(--accent, #d5a5bd);
+}
+
+/* ANIMATIONS */
+
+@keyframes birthdayAppear {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes flowerFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(-5deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(5deg);
+    }
+}
+
+/* TABLET AND MOBILE */
+
+@media (max-width: 768px) {
+    .birthday-screen {
+        padding: 80px 18px 45px;
+    }
+
+    .birthday-content {
+        padding: 35px 12px;
+    }
+
+    .decoration-left {
+        left: -35px;
+        top: 12%;
+    }
+
+    .decoration-right {
+        right: -35px;
+        bottom: 10%;
+    }
+}
+
+@media (max-width: 480px) {
+    .birthday-eyebrow {
+        font-size: 9px;
+        letter-spacing: 2px;
+        line-height: 1.8;
+    }
+
+    .birthday-flower {
+        width: 76px;
+        height: 76px;
+        font-size: 43px;
+    }
+
+    .birthday-description {
+        font-size: 14px;
+    }
+
+    .birthday-instruction {
+        font-size: 21px;
+    }
+
+    .explore-button {
+        width: 100%;
+        max-width: 290px;
+        padding: 0 15px;
+    }
+
+    .welcome-decoration {
+        font-size: 100px;
+        opacity: 0.6;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .birthday-screen,
+    .birthday-flower,
+    .welcome-decoration {
+        animation: none;
+    }
+
+    .explore-button {
+        transition: none;
+    }
+}
+
+/* INVITATION EXIT ANIMATION */
+
+.entrance-screen.screen-exit {
+    animation: invitationExit 0.45s ease forwards;
+    pointer-events: none;
+}
+
+@keyframes invitationExit {
+    to {
+        opacity: 0;
+        transform: scale(0.97);
+    }
+}
+
+/* =========================================
+   FLOWER GARDEN
+========================================= */
+
+.garden-screen {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: 100px 24px 80px;
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse at 10% 20%, rgba(235, 199, 181, 0.22), transparent 38%),
+        radial-gradient(ellipse at 90% 80%, rgba(195, 174, 213, 0.24), transparent 40%),
+        var(--background, #fff7f8);
+}
+
+.garden-content {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 900px);
+    margin: 0 auto;
+    text-align: center;
+}
+
+.garden-eyebrow {
+    margin: 0 0 16px;
+    color: var(--accent, #a66f89);
+    font-family: "Nunito", sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 3px;
+}
+
+.garden-title {
+    margin: 0;
+    color: var(--text, #51483f);
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(40px, 6vw, 65px);
+    font-weight: 500;
+    line-height: 1.08;
+}
+
+.garden-title span {
+    display: block;
+    color: var(--accent, #a66f89);
+    font-style: italic;
+}
+
+.garden-description {
+    max-width: 480px;
+    margin: 20px auto 0;
+    color: var(--muted, #897b7e);
+    font-family: "Nunito", sans-serif;
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.flower-progress {
+    display: inline-block;
+    margin: 30px auto 35px;
+    padding: 11px 23px;
+    border: 1px solid var(--border, #ead8df);
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.5);
+    color: var(--muted, #897b7e);
+    font-family: "Nunito", sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+
+.flower-progress span {
+    color: var(--accent, #a66f89);
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.flower-garden {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 20px;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 30px 15px;
+    border: 1px solid rgba(190, 145, 164, 0.2);
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 15px 45px rgba(130, 95, 115, 0.07);
+}
+
+.garden-flower {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 13px;
+    min-width: 0;
+    padding: 20px 8px;
+    border: 1px solid transparent;
+    border-radius: 22px;
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.garden-flower:hover {
+    transform: translateY(-7px);
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.garden-flower:focus-visible {
+    outline: 2px solid var(--accent, #a66f89);
+    outline-offset: 3px;
+}
+
+.flower-art {
+    position: relative;
+    display: block;
+    width: 65px;
+    height: 65px;
+    transition: transform 0.3s ease;
+}
+
+.garden-flower:hover .flower-art {
+    transform: rotate(12deg) scale(1.08);
+}
+
+.petal {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 22px;
+    height: 29px;
+    margin-left: -11px;
+    margin-top: -27px;
+    border-radius: 50% 50% 45% 45%;
+    transform-origin: 50% 27px;
+    background: #e9b9cc;
+}
+
+.p1 { transform: rotate(0deg); }
+.p2 { transform: rotate(72deg); background: #d9b8df; }
+.p3 { transform: rotate(144deg); background: #e8c1d0; }
+.p4 { transform: rotate(216deg); background: #d6b4dc; }
+.p5 { transform: rotate(288deg); background: #efc9d4; }
+
+.flower-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    background: #d5a85f;
+    transform: translate(-50%, -50%);
+    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.25);
+}
+
+.garden-flower:nth-child(2) .petal {
+    background: #d9b9e6;
+}
+
+.garden-flower:nth-child(3) .petal {
+    background: #f0c4c9;
+}
+
+.garden-flower:nth-child(4) .petal {
+    background: #e8c9a4;
+}
+
+.garden-flower:nth-child(5) .petal {
+    background: #d8c5e8;
+}
+
+.flower-label {
+    color: var(--muted, #897b7e);
+    font-family: "Nunito", sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.garden-flower.collected {
+    border-color: rgba(166, 111, 137, 0.2);
+    background: rgba(235, 199, 213, 0.2);
+    cursor: default;
+}
+
+.garden-flower.collected .flower-art {
+    transform: scale(0.85);
+    opacity: 0.5;
+}
+
+.garden-flower.collected .flower-label::after {
+    content: "  COLLECTED";
+    display: block;
+    margin-top: 5px;
+    color: var(--accent, #a66f89);
+    font-size: 8px;
+}
+
+.flower-message {
+    min-height: 48px;
+    max-width: 520px;
+    margin: 28px auto 0;
+    color: var(--muted, #897b7e);
+    font-family: "Caveat", cursive;
+    font-size: 24px;
+    line-height: 1.5;
+}
+
+.letter-unlock {
+    max-width: 480px;
+    margin: 25px auto 0;
+    padding: 30px 20px;
+    border: 1px solid var(--border, #ead8df);
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.65);
+    animation: birthdayAppear 0.7s ease both;
+}
+
+.letter-unlock p {
+    margin: 0 0 10px;
+    color: var(--accent, #a66f89);
+    font-family: "Nunito", sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.letter-unlock h2 {
+    margin: 0 0 20px;
+    color: var(--text, #51483f);
+    font-family: "Cormorant Garamond", serif;
+    font-size: 29px;
+    font-weight: 500;
+}
+
+.letter-unlock button {
+    padding: 13px 24px;
+    border: 0;
+    border-radius: 50px;
+    background: var(--accent, #a66f89);
+    color: white;
+    font-family: "Nunito", sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+/* GARDEN DARK MODE */
+
+body.dark-mode .garden-screen {
+    background:
+        radial-gradient(ellipse at 10% 20%, rgba(166, 111, 137, 0.16), transparent 38%),
+        radial-gradient(ellipse at 90% 80%, rgba(125, 105, 155, 0.18), transparent 40%),
+        var(--background, #211d25);
+}
+
+body.dark-mode .garden-title,
+body.dark-mode .letter-unlock h2 {
+    color: var(--text, #f4e9ee);
+}
+
+body.dark-mode .flower-garden,
+body.dark-mode .letter-unlock {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+body.dark-mode .flower-progress,
+body.dark-mode .garden-flower:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* GARDEN RESPONSIVENESS */
+
+@media (max-width: 650px) {
+    .garden-screen {
+        padding: 85px 16px 55px;
+    }
+
+    .flower-garden {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+        padding: 20px 10px;
+    }
+
+    .garden-flower {
+        padding: 17px 5px;
+    }
+
+    .garden-description {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 380px) {
+    .flower-garden {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .garden-title {
+        font-size: 39px;
+    }
+
+    .flower-art {
+        transform: scale(0.9);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .garden-flower,
+    .garden-flower .flower-art {
+        transition: none;
+    }
+}
+
+
+/* ==========================================
+   SECRET BIRTHDAY LETTER
+========================================== */
+
+.letter-screen {
+    min-height: 100vh;
+    width: 100%;
+    padding: 90px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:
+        radial-gradient(ellipse at 15% 20%, rgba(235, 199, 181, 0.22), transparent 40%),
+        radial-gradient(ellipse at 85% 80%, rgba(168, 184, 160, 0.20), transparent 40%),
+        var(--background, #faf8f2);
+    color: var(--text, #51483f);
+    overflow: hidden;
+}
+
+.letter-screen[hidden],
+.letter-paper[hidden] {
+    display: none !important;
+}
+
+.letter-content {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+    animation: letterFadeIn 0.8s ease both;
+}
+
+.letter-eyebrow {
+    margin-bottom: 16px;
+    color: #a77f83;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.letter-heading {
+    margin: 0;
+    color: var(--text, #51483f);
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 500;
+    line-height: 1.1;
+}
+
+.letter-intro {
+    margin: 15px 0 35px;
+    color: var(--muted, #82766d);
+    font-size: 0.98rem;
+    line-height: 1.7;
+}
+
+/* ENVELOPE */
+
+.envelope-container {
+    width: 260px;
+    height: 180px;
+    margin: 35px auto 28px;
+    perspective: 1000px;
+}
+
+.envelope {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 15px 18px rgba(81, 72, 63, 0.15));
+}
+
+.envelope-back {
+    position: absolute;
+    inset: 0;
+    background: #d8b7ad;
+    border-radius: 5px;
+}
+
+.envelope-letter-preview {
+    position: absolute;
+    z-index: 1;
+    left: 15px;
+    right: 15px;
+    top: 8px;
+    height: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 22px;
+    background: #fffdf7;
+    color: #987b75;
+    font-family: "Caveat", cursive;
+    font-size: 1.45rem;
+    transition: transform 0.8s ease;
+}
+
+.envelope-front {
+    position: absolute;
+    z-index: 3;
+    inset: 0;
+    background: #e8c5ba;
+    clip-path: polygon(0 0, 50% 58%, 100% 0, 100% 100%, 0 100%);
+    border-radius: 5px;
+}
+
+.envelope-flap {
+    position: absolute;
+    z-index: 4;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #d3a9a2;
+    clip-path: polygon(0 0, 100% 0, 50% 60%);
+    transform-origin: top center;
+    transition: transform 0.7s ease, z-index 0.1s 0.35s;
+}
+
+.envelope-seal {
+    position: absolute;
+    z-index: 5;
+    left: 50%;
+    top: 58%;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    border: 2px solid #f8e7df;
+    border-radius: 50%;
+    background: #a77f83;
+    color: #fffaf4;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.1rem;
+}
+
+/* ENVELOPE OPENING ANIMATION */
+
+.envelope-container.open .envelope-flap {
+    transform: rotateX(180deg);
+    z-index: 0;
+}
+
+.envelope-container.open .envelope-letter-preview {
+    transform: translateY(-65px);
+}
+
+.envelope-container.open .envelope-seal {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+/* OPEN LETTER BUTTON */
+
+.reveal-letter-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 14px 27px;
+    border: 1px solid #c99f9b;
+    border-radius: 50px;
+    background: #c99f9b;
+    color: #fffdf9;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.reveal-letter-button:hover {
+    transform: translateY(-3px);
+    background: #b98989;
+}
+
+.reveal-letter-button span {
+    font-size: 1.2rem;
+}
+
+/* LETTER PAPER */
+
+.letter-paper {
+    position: relative;
+    width: 100%;
+    max-width: 620px;
+    margin: 55px auto 0;
+    padding: 45px clamp(24px, 7vw, 65px);
+    border: 1px solid #e8dcd0;
+    border-radius: 4px;
+    background:
+        repeating-linear-gradient(
+            transparent,
+            transparent 34px,
+            rgba(181, 157, 145, 0.12) 35px
+        ),
+        #fffdf7;
+    color: #51483f;
+    box-shadow: 0 18px 55px rgba(81, 72, 63, 0.12);
+    text-align: left;
+    animation: paperReveal 1s ease both;
+}
+
+.letter-paper-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e8dcd0;
+    color: #a58b80;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.letter-paper-flower {
+    margin: 25px 0 5px;
+    color: #bd9291;
+    font-size: 1.7rem;
+    text-align: center;
+}
+
+.letter-paper h2 {
+    margin: 15px 0 20px;
+    color: #987b75;
+    font-family: "Caveat", cursive;
+    font-size: 2.3rem;
+    font-weight: 500;
+}
+
+.handwritten-message {
+    color: #62554e;
+    font-family: "Caveat", cursive;
+    font-size: 1.4rem;
+    line-height: 1.85;
+}
+
+.handwritten-message p {
+    margin: 0 0 20px;
+}
+
+.letter-ending {
+    margin-top: 35px;
+    color: #62554e;
+    font-family: "Caveat", cursive;
+    font-size: 1.35rem;
+}
+
+.letter-ending p {
+    margin-bottom: 3px;
+}
+
+.letter-ending span {
+    display: block;
+    color: #987b75;
+    font-size: 1.65rem;
+}
+
+.letter-paper-footer {
+    margin-top: 35px;
+    padding-top: 15px;
+    border-top: 1px solid #e8dcd0;
+    color: #a58b80;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+/* ANIMATIONS */
+
+@keyframes letterFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes paperReveal {
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* DARK MODE */
+
+body.dark-mode .letter-screen {
+    background:
+        radial-gradient(ellipse at 15% 20%, rgba(167, 127, 131, 0.13), transparent 40%),
+        radial-gradient(ellipse at 85% 80%, rgba(168, 184, 160, 0.10), transparent 40%),
+        var(--background, #242321);
+}
+
+body.dark-mode .letter-paper {
+    border-color: #51483f;
+    background:
+        repeating-linear-gradient(
+            transparent,
+            transparent 34px,
+            rgba(255, 255, 255, 0.045) 35px
+        ),
+        #34302d;
+    color: #eee4d9;
+}
+
+body.dark-mode .letter-paper-top,
+body.dark-mode .letter-paper-footer {
+    border-color: #5b5049;
+    color: #c5a9a0;
+}
+
+body.dark-mode .letter-paper h2,
+body.dark-mode .letter-ending span {
+    color: #dfb7ae;
+}
+
+body.dark-mode .handwritten-message,
+body.dark-mode .letter-ending {
+    color: #eee4d9;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+    .letter-screen {
+        padding: 65px 18px;
+    }
+
+    .letter-eyebrow {
+        font-size: 0.62rem;
+        letter-spacing: 2px;
+    }
+
+    .letter-intro {
+        font-size: 0.9rem;
+    }
+
+    .envelope-container {
+        width: 230px;
+        height: 160px;
+    }
+
+    .letter-paper {
+        margin-top: 40px;
+        padding: 30px 23px;
+    }
+
+    .letter-paper-top {
+        font-size: 0.55rem;
+        letter-spacing: 1px;
+    }
+
+    .handwritten-message {
+        font-size: 1.25rem;
+    }
+}
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+    .letter-content,
+    .letter-paper {
+        animation: none;
+    }
+
+    .envelope-flap,
+    .envelope-letter-preview,
+    .reveal-letter-button {
+        transition: none;
+    }
+}
+
+/* ==========================================
+   SUNFLOWER DETAILS ON THE LETTER
+========================================== */
+
+.letter-paper {
+    overflow: hidden;
+}
+
+.letter-paper::before,
+.letter-paper::after {
+    content: "";
+    position: absolute;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle, #805b36 0 13%, transparent 14%),
+        repeating-conic-gradient(
+            from 0deg,
+            #e8b94f 0deg 18deg,
+            #f5d78b 18deg 36deg
+        );
+    opacity: 0.72;
+    pointer-events: none;
+}
+
+.letter-paper::before {
+    top: 65px;
+    right: 22px;
+    transform: rotate(12deg);
+}
+
+.letter-paper::after {
+    bottom: 65px;
+    left: 22px;
+    transform: rotate(-12deg);
+}
+
+@media (max-width: 600px) {
+    .letter-paper::before,
+    .letter-paper::after {
+        width: 38px;
+        height: 38px;
+        opacity: 0.55;
+    }
+
+    .letter-paper::before {
+        right: 12px;
+    }
+
+    .letter-paper::after {
+        left: 12px;
+    }
+}
+
+/* ==========================================
+   BIRTHDAY SCREEN — SUNFLOWER ATMOSPHERE
+========================================== */
+
+#birthdayScreen {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+}
+
+#birthdayScreen::before,
+#birthdayScreen::after {
+    content: "";
+    position: absolute;
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle, #79542f 0 10%, transparent 11%),
+        repeating-conic-gradient(
+            #e8bd61 0deg 14deg,
+            #f5d995 14deg 28deg
+        );
+    opacity: 0.16;
+    filter: blur(0.4px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+#birthdayScreen::before {
+    top: 7%;
+    left: -65px;
+    transform: rotate(12deg);
+}
+
+#birthdayScreen::after {
+    bottom: 5%;
+    right: -65px;
+    transform: rotate(-12deg);
+}
+
+#birthdayScreen > .birthday-content {
+    position: relative;
+    z-index: 2;
+}
+
+#birthdayScreen > .welcome-decoration {
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+}
+
+@media (max-width: 600px) {
+    #birthdayScreen::before,
+    #birthdayScreen::after {
+        width: 115px;
+        height: 115px;
+        opacity: 0.12;
+    }
+
+    #birthdayScreen::before {
+        left: -48px;
+    }
+
+    #birthdayScreen::after {
+        right: -48px;
+    }
+}
+
+/* ==========================================
+   MOBILE LAYOUT FIX
+========================================== */
+
+@media (max-width: 600px) {
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    #app {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: clip;
+    }
+
+    /* Keep every screen centered */
+
+    .entrance-screen,
+    #birthdayScreen,
+    #gardenScreen,
+    .letter-screen {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        box-sizing: border-box;
+    }
+
+    /* Prevent decorative flowers from expanding the page */
+
+    #birthdayScreen::before {
+        left: 0;
+        transform: translateX(-55%) rotate(12deg);
+    }
+
+    #birthdayScreen::after {
+        right: 0;
+        transform: translateX(55%) rotate(-12deg);
+    }
+
+    .letter-paper::before {
+        right: 8px;
+    }
+
+    .letter-paper::after {
+        left: 8px;
+    }
+
+    /* Smaller, more balanced typography */
+
+    .letter-heading {
+        font-size: 2.35rem;
+    }
+
+    .letter-intro {
+        font-size: 0.88rem;
+    }
+
+    .letter-eyebrow {
+        font-size: 0.62rem;
+        letter-spacing: 2px;
+    }
+
+    .letter-paper h2 {
+        font-size: 1.75rem;
+    }
+
+    .handwritten-message {
+        font-size: 1.2rem;
+        line-height: 1.7;
+    }
+
+    .letter-ending p {
+        font-size: 1.2rem;
+    }
+
+    .letter-ending span {
+        font-size: 1.45rem;
+    }
+
+    .reveal-letter-button {
+        font-size: 0.85rem;
+        padding: 13px 25px;
+    }
+}
+
+
+/* ==========================================
+   MOBILE TEXT SIZE REFINEMENT
+========================================== */
+
+@media (max-width: 600px) {
+
+    /* Invitation screen */
+    .invitation-card {
+        padding: 28px 20px;
+    }
+
+    .invitation-content h1 {
+        font-size: 2.35rem;
+        line-height: 1.05;
+    }
+
+    .invitation-content h2 {
+        font-size: 1.05rem;
+        line-height: 1.5;
+    }
+
+    .invitation-content .eyebrow {
+        font-size: 0.78rem;
+        line-height: 1.5;
+    }
+
+    .invitation-description {
+        font-size: 0.78rem;
+    }
+
+    /* Birthday welcome screen */
+    .birthday-title {
+        font-size: 2.3rem;
+        line-height: 1.15;
+    }
+
+    .birthday-description,
+    .birthday-instruction {
+        font-size: 0.82rem;
+        line-height: 1.6;
+    }
+
+    .birthday-eyebrow,
+    .birthday-small-heading,
+    .birthday-signature {
+        font-size: 0.72rem;
+    }
+
+    /* Garden screen */
+    .garden-title {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+
+    .garden-description {
+        font-size: 0.85rem;
+        line-height: 1.6;
+    }
+
+    .garden-eyebrow {
+        font-size: 0.72rem;
+    }
+
+    /* Letter screen */
+    .letter-heading {
+        font-size: 2.2rem;
+    }
+
+    .letter-intro {
+        font-size: 0.85rem;
+    }
+
+    .letter-paper h2 {
+        font-size: 1.6rem;
+    }
+
+    .handwritten-message {
+        font-size: 1.05rem;
+        line-height: 1.65;
+    }
+
+    .letter-ending p {
+        font-size: 1.05rem;
+    }
+
+    .letter-ending span {
+        font-size: 1.25rem;
+    }
+
+    .reveal-letter-button {
+        font-size: 0.8rem;
+        padding: 12px 22px;
+    }
+}
+
+
+/* =================================
+   FOOD TREASURE HUNT
+================================= */
+
+.food-treasure-hunt {
+    width: min(100%, 560px);
+    margin: 32px auto;
+    padding: 25px 15px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+    justify-items: center;
+}
+
+/* Individual treasure */
+
+.food-treasure {
+    width: 100%;
+    max-width: 220px;
+    min-height: 185px;
+    padding: 15px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    background: var(--paper);
+    box-shadow: 0 8px 22px var(--shadow);
+    cursor: pointer;
+    font-family: var(--body-font);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.food-treasure:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 13px 28px var(--shadow);
+}
+
+.food-treasure:focus-visible {
+    outline: 3px solid var(--lavender-dark);
+    outline-offset: 4px;
+}
+
+/* Food illustration backgrounds */
+
+.food-art {
+    width: 112px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.food-chapli {
+    background: #f9e8dc;
+}
+
+.food-biryani {
+    background: #f9edcf;
+}
+
+.food-pulao {
+    background: #e8eddf;
+}
+
+.food-alfredo {
+    background: #f0e6f4;
+}
+
+.food-paratha {
+    background: #f7e8cf;
+}
+
+/* Main food shapes */
+
+.food-illustration {
+    width: 76px;
+    height: 58px;
+    position: relative;
+    display: block;
+}
+
+/* Chapli Kabab */
+
+.food-chapli .food-illustration {
+    width: 75px;
+    height: 48px;
+    border-radius: 48% 52% 46% 54%;
+    transform: rotate(-9deg);
+    background:
+        radial-gradient(ellipse at 30% 35%, #f1b36f 0 4%, transparent 5%),
+        radial-gradient(ellipse at 65% 60%, #e9aa69 0 5%, transparent 6%),
+        radial-gradient(ellipse at 45% 70%, #9b492d 0 5%, transparent 6%),
+        radial-gradient(ellipse at 70% 25%, #f4c17e 0 4%, transparent 5%),
+        linear-gradient(145deg, #bd7041, #874126);
+    border: 5px solid #d58d55;
+    box-shadow: 0 5px 0 #9c5938;
+}
+
+/* Biryani */
+
+.food-biryani .food-illustration {
+    width: 82px;
+    height: 43px;
+    margin-top: 10px;
+    border-radius: 12px 12px 45px 45px;
+    background:
+        radial-gradient(ellipse at 20% 25%, #d77b37 0 3px, transparent 4px),
+        radial-gradient(ellipse at 45% 45%, #f4d68b 0 3px, transparent 4px),
+        radial-gradient(ellipse at 72% 25%, #e4a54b 0 3px, transparent 4px),
+        radial-gradient(ellipse at 65% 65%, #fff0bd 0 3px, transparent 4px),
+        radial-gradient(ellipse at 30% 70%, #d98a38 0 3px, transparent 4px),
+        #f1d28a;
+    border-bottom: 7px solid #c88d58;
+    box-shadow: 0 5px 0 #b97849;
+}
+
+.food-biryani .food-illustration::before {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: -7px;
+    left: 35px;
+    border-radius: 50%;
+    background: #76944e;
+}
+
+/* Pulao */
+
+.food-pulao .food-illustration {
+    width: 82px;
+    height: 43px;
+    margin-top: 10px;
+    border-radius: 12px 12px 45px 45px;
+    background:
+        radial-gradient(ellipse at 20% 30%, #d4b16c 0 3px, transparent 4px),
+        radial-gradient(ellipse at 45% 45%, #fff0c5 0 3px, transparent 4px),
+        radial-gradient(ellipse at 70% 25%, #d7bb82 0 3px, transparent 4px),
+        radial-gradient(ellipse at 65% 65%, #f4dfaa 0 3px, transparent 4px),
+        radial-gradient(ellipse at 30% 70%, #c6a36b 0 3px, transparent 4px),
+        #e9d4a4;
+    border-bottom: 7px solid #9baf82;
+    box-shadow: 0 5px 0 #83956e;
+}
+
+.food-pulao .food-illustration::before {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    top: -6px;
+    left: 36px;
+    border-radius: 50%;
+    background: #9baf82;
+}
+
+/* Chicken Alfredo */
+
+.food-alfredo .food-illustration {
+    width: 78px;
+    height: 50px;
+    border-radius: 50%;
+    background:
+        radial-gradient(ellipse at 35% 40%, #fff5d9 0 5px, transparent 6px),
+        radial-gradient(ellipse at 65% 55%, #fff5d9 0 5px, transparent 6px),
+        radial-gradient(ellipse at 48% 65%, #fff5d9 0 5px, transparent 6px),
+        radial-gradient(ellipse at 65% 25%, #d99a65 0 7px, transparent 8px),
+        radial-gradient(ellipse at 25% 65%, #d99a65 0 6px, transparent 7px),
+        #e7c99d;
+    border: 7px solid #fffaf0;
+    box-shadow: 0 4px 0 #c6a9c9;
+}
+
+.food-alfredo .food-illustration::before {
+    content: "";
+    position: absolute;
+    width: 35px;
+    height: 17px;
+    top: 9px;
+    left: 15px;
+    border: 3px solid #f8edcf;
+    border-radius: 50%;
+    transform: rotate(-20deg);
+}
+
+/* Paratha */
+
+.food-paratha .food-illustration {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 35% 35%, #f8d78f 0 5px, transparent 6px),
+        radial-gradient(circle at 70% 60%, #b66c36 0 4px, transparent 5px),
+        radial-gradient(circle at 35% 75%, #d18a48 0 4px, transparent 5px),
+        radial-gradient(circle at 65% 25%, #f8d78f 0 5px, transparent 6px),
+        linear-gradient(135deg, #f1c77f, #d9954f);
+    border: 5px solid #e9b66d;
+    box-shadow: 0 4px 0 #bd8046;
+    transform: rotate(-8deg);
+}
+
+/* Food names */
+
+.food-label {
+    color: var(--text-primary);
+    font-family: var(--heading-font);
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.food-status {
+    color: var(--pink-dark);
+    font-family: var(--body-font);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Collected treasure */
+
+.food-treasure.collected {
+    border-color: var(--lavender);
+    background: var(--lavender-light);
+    transform: scale(0.97);
+}
+
+.food-treasure.collected .food-status {
+    color: var(--lavender-dark);
+}
+
+.food-treasure.collected .food-status::after {
+    content: " FOUND!";
+}
+
+/* Progress text */
+
+.food-progress {
+    margin: 25px auto 10px;
+    color: var(--text-secondary);
+    font-family: var(--body-font);
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.food-progress span {
+    color: var(--pink-dark);
+    font-size: 1.3rem;
+}
+
+/* Phone layout */
+
+@media (max-width: 600px) {
+
+    .food-treasure-hunt {
+        gap: 13px;
+        padding: 15px 5px;
+        margin: 22px auto;
+    }
+
+    .food-treasure {
+        min-height: 160px;
+        padding: 12px 7px;
+        border-radius: 18px;
+    }
+
+    .food-art {
+        width: 90px;
+        height: 85px;
+    }
+
+    .food-label {
+        font-size: 1.08rem;
+    }
+
+    .food-status {
+        font-size: 0.65rem;
+    }
+
+    .food-progress {
+        font-size: 0.8rem;
+    }
+
+}
+
+/* =========================================
+   POLAROID LOVE WALL
+========================================= */
+
+.polaroid-content {
+    width: min(100%, 1050px);
+    margin: 0 auto;
+}
+
+.polaroid-heading {
+    margin-bottom: 12px;
+}
+
+.polaroid-intro {
+    width: min(100%, 600px);
+    margin: 30px auto 10px;
+    padding: 12px 18px;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    border-top: 1px solid #ddc9c4;
+    border-bottom: 1px solid #ddc9c4;
+    color: #94716f;
+    font-family: var(--body-font);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+/* The scrapbook wall */
+
+.polaroid-wall {
+    width: min(100%, 790px);
+    margin: 35px auto;
+    padding: 20px 12px 35px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: center;
+    justify-items: center;
+    gap: 35px 25px;
+    background:
+        radial-gradient(ellipse at 15% 20%, rgba(232,183,203,.13), transparent 35%),
+        radial-gradient(ellipse at 85% 75%, rgba(200,182,220,.15), transparent 35%);
+}
+
+/* Individual Polaroid */
+
+.polaroid-card {
+    position: relative;
+    width: 100%;
+    max-width: 215px;
+    min-height: 235px;
+    padding: 18px 15px 13px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    overflow: visible;
+    border: 1px solid #e9e1d8;
+    border-radius: 2px;
+    background: #fffdf8;
+    box-shadow: 2px 5px 12px rgba(73, 52, 48, .13);
+    color: #493d3a;
+    cursor: pointer;
+    font-family: var(--hand-font);
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+/* Slightly different card angles */
+
+.polaroid-card:nth-child(1) {
+    transform: rotate(-5deg);
+}
+
+.polaroid-card:nth-child(2) {
+    transform: rotate(3deg);
+}
+
+.polaroid-card:nth-child(3) {
+    transform: rotate(-2deg);
+}
+
+.polaroid-card:nth-child(4) {
+    transform: rotate(4deg);
+}
+
+.polaroid-card:nth-child(5) {
+    transform: rotate(-4deg);
+}
+
+.polaroid-card:nth-child(6) {
+    transform: rotate(5deg);
+}
+
+.polaroid-card:nth-child(7) {
+    transform: rotate(-3deg);
+}
+
+.polaroid-card:nth-child(8) {
+    transform: rotate(3deg);
+}
+
+.polaroid-card:hover {
+    z-index: 2;
+    transform: translateY(-8px) rotate(0deg) scale(1.035);
+    box-shadow: 4px 12px 22px rgba(73, 52, 48, .18);
+}
+
+.polaroid-card:focus-visible {
+    outline: 3px solid var(--pink-dark);
+    outline-offset: 5px;
+}
+
+/* Handwritten message */
+
+.polaroid-message {
+    width: 100%;
+    min-height: 115px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #493d3a;
+    font-family: var(--hand-font);
+    font-size: 1.65rem;
+    font-weight: 600;
+    line-height: 1.25;
+    text-align: center;
+}
+
+/* Little doodles */
+
+.polaroid-doodle {
+    display: block;
+    color: #a54e50;
+    line-height: 1;
+}
+
+.doodle-heart {
+    font-family: Georgia, serif;
+    font-size: 1.65rem;
+}
+
+.doodle-flower {
+    color: #a86d70;
+    font-size: 1.7rem;
+}
+
+.doodle-star {
+    color: #b17b4d;
+    font-size: 1.5rem;
+}
+
+.polaroid-caption {
+    margin-top: auto;
+    color: #a28c82;
+    font-family: var(--body-font);
+    font-size: .55rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-align: center;
+}
+
+/* Opened cards */
+
+.polaroid-card.collected {
+    background: #fff8f5;
+    border-color: #d9b4b2;
+    box-shadow: 3px 7px 15px rgba(140, 88, 91, .17);
+}
+
+.polaroid-card.collected .polaroid-doodle {
+    color: #bd7180;
+}
+
+/* Progress and message */
+
+.polaroid-content .flower-progress {
+    margin-top: 25px;
+    font-size: .85rem;
+}
+
+.polaroid-content .flower-message {
+    width: min(100%, 500px);
+    margin: 15px auto;
+    padding: 14px 18px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, .55);
+    color: var(--text-secondary);
+    font-family: var(--hand-font);
+    font-size: 1.35rem;
+    text-align: center;
+}
+
+/* Phone layout */
+
+@media (max-width: 600px) {
+
+    .polaroid-intro {
+        margin-top: 23px;
+        padding: 10px 5px;
+        font-size: .55rem;
+        letter-spacing: 1px;
+    }
+
+    .polaroid-wall {
+        width: 100%;
+        padding: 20px 5px 30px;
+        margin: 25px auto;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 25px 13px;
+    }
+
+    .polaroid-card {
+        width: 100%;
+        min-height: 190px;
+        padding: 13px 9px 11px;
+        gap: 8px;
+    }
+
+    .polaroid-message {
+        min-height: 95px;
+        font-size: 1.35rem;
+        line-height: 1.2;
+    }
+
+    .polaroid-doodle {
+        font-size: 1.3rem;
+    }
+
+    .polaroid-caption {
+        font-size: .47rem;
+        letter-spacing: 1px;
+    }
+
+    .polaroid-content .flower-message {
+        font-size: 1.2rem;
+    }
+
+}
+
+@media (max-width: 360px) {
+
+    .polaroid-wall {
+        gap: 20px 9px;
+    }
+
+    .polaroid-card {
+        min-height: 175px;
+        padding: 10px 7px;
+    }
+
+    .polaroid-message {
+        font-size: 1.2rem;
+        min-height: 85px;
+    }
+
+}
+
+/* =========================================
+   SCRAPBOOK POLAROID UPGRADE
+========================================= */
+
+/* Warm scrapbook background */
+
+#gardenScreen {
+    background-color: #f8f0e9;
+    background-image:
+        radial-gradient(ellipse at 15% 15%, rgba(224, 177, 178, .18), transparent 35%),
+        radial-gradient(ellipse at 85% 80%, rgba(195, 171, 190, .16), transparent 35%);
+}
+
+/* Paper texture on the wall */
+
+.polaroid-wall {
+    position: relative;
+    isolation: isolate;
+}
+
+.polaroid-wall::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image: radial-gradient(#b99d8d 0.6px, transparent 0.6px);
+    background-size: 13px 13px;
+    opacity: .12;
+}
+
+/* Make cards feel more like real paper */
+
+.polaroid-card {
+    border: 1px solid #e9ded3;
+    border-radius: 1px;
+    background:
+        linear-gradient(rgba(255,255,255,.96), rgba(255,253,247,.98));
+    box-shadow:
+        1px 3px 5px rgba(72, 49, 43, .08),
+        3px 8px 16px rgba(72, 49, 43, .12);
+}
+
+/* Little pieces of washi tape */
+
+.polaroid-card::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    width: 66px;
+    height: 21px;
+    transform: translateX(-50%) rotate(-4deg);
+    background: rgba(224, 177, 178, .65);
+    z-index: 3;
+    box-shadow: 0 1px 2px rgba(70, 45, 40, .08);
+}
+
+.polaroid-card:nth-child(2)::before,
+.polaroid-card:nth-child(5)::before {
+    background: rgba(204, 190, 218, .7);
+    transform: translateX(-50%) rotate(5deg);
+}
+
+.polaroid-card:nth-child(3)::before,
+.polaroid-card:nth-child(7)::before {
+    background: rgba(222, 199, 155, .7);
+    transform: translateX(-50%) rotate(-2deg);
+}
+
+/* Tiny handwritten-style corner detail */
+
+.polaroid-card .polaroid-caption {
+    padding-top: 8px;
+    border-top: 1px solid #eee4dd;
+    width: 100%;
+}
+
+/* More natural hover and tap feel */
+
+.polaroid-card:hover {
+    box-shadow:
+        2px 5px 8px rgba(72, 49, 43, .1),
+        5px 14px 24px rgba(72, 49, 43, .17);
+}
+
+.polaroid-card.collected {
+    background: #fff8f3;
+    border-color: #d9b4b2;
+}
+
+.polaroid-card.collected::before {
+    opacity: .85;
+}
+
+/* Phone adjustments */
+
+@media (max-width: 600px) {
+
+    .polaroid-card::before {
+        width: 52px;
+        height: 17px;
+        top: -8px;
+    }
+
+    .polaroid-card {
+        box-shadow:
+            1px 3px 5px rgba(72, 49, 43, .08),
+            2px 6px 12px rgba(72, 49, 43, .12);
+    }
+
+    .polaroid-card:hover {
+        transform: translateY(-4px) rotate(0deg);
+    }
+
+}
+
+/* =========================================
+   POLAROID OPENING INTERACTION
+========================================= */
+
+.polaroid-card {
+    transform-origin: center center;
+    transition:
+        transform .35s cubic-bezier(.2,.8,.2,1),
+        box-shadow .35s ease,
+        background .35s ease;
+}
+
+/* Opened card */
+
+.polaroid-card.collected {
+    transform: translateY(-7px) rotate(0deg) scale(1.035);
+    background: #fff5f0;
+    box-shadow:
+        0 5px 10px rgba(72, 49, 43, .08),
+        0 14px 25px rgba(72, 49, 43, .15);
+}
+
+/* Little doodle reaction */
+
+.polaroid-card.collected .polaroid-doodle {
+    animation: doodlePop .55s ease;
+}
+
+@keyframes doodlePop {
+    0% {
+        transform: scale(.7) rotate(-15deg);
+    }
+
+    60% {
+        transform: scale(1.25) rotate(8deg);
+    }
+
+    100% {
+        transform: scale(1) rotate(0);
+    }
+}
+
+/* Make opened cards look like treasured keepsakes */
+
+.polaroid-card.collected .polaroid-caption {
+    color: #a66d7f;
+    font-weight: 900;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .polaroid-card,
+    .polaroid-card.collected .polaroid-doodle {
+        animation: none;
+        transition: none;
+    }
+}
+
+/* =========================================
+   HANDMADE POLAROID COLLAGE
+========================================= */
+
+.polaroid-wall {
+    width: min(100%, 850px);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 42px 35px;
+    padding: 35px 20px 45px;
+}
+
+/* Natural scrapbook arrangement */
+
+.polaroid-card:nth-child(1) {
+    transform: rotate(-6deg) translateY(12px);
+}
+
+.polaroid-card:nth-child(2) {
+    transform: rotate(4deg) translateY(-8px);
+}
+
+.polaroid-card:nth-child(3) {
+    transform: rotate(-3deg) translateY(18px);
+}
+
+.polaroid-card:nth-child(4) {
+    transform: rotate(5deg) translateY(-12px);
+}
+
+.polaroid-card:nth-child(5) {
+    transform: rotate(-5deg) translateY(8px);
+}
+
+.polaroid-card:nth-child(6) {
+    transform: rotate(3deg) translateY(-15px);
+}
+
+.polaroid-card:nth-child(7) {
+    transform: rotate(-4deg) translateY(12px);
+}
+
+.polaroid-card:nth-child(8) {
+    transform: rotate(5deg) translateY(-8px);
+}
+
+/* Keep hover interaction above neighbouring cards */
+
+.polaroid-card:hover {
+    position: relative;
+    z-index: 5;
+    transform: translateY(-8px) rotate(0deg) scale(1.04);
+}
+
+/* Keep opened cards slightly lifted */
+
+.polaroid-card.collected {
+    position: relative;
+    z-index: 4;
+}
+
+/* Mobile collage */
+
+@media (max-width: 600px) {
+    .polaroid-wall {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 28px 15px;
+        padding: 25px 8px 35px;
+    }
+
+    .polaroid-card:nth-child(odd) {
+        transform: rotate(-3deg);
+    }
+
+    .polaroid-card:nth-child(even) {
+        transform: rotate(3deg);
+    }
+
+    .polaroid-card:hover {
+        transform: translateY(-4px) rotate(0deg);
+    }
+}
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+    .polaroid-card:hover {
+        transform: none;
+    }
+}
+
+/* =========================================
+   SCRAPBOOK SUNFLOWER DECORATIONS
+========================================= */
+
+.polaroid-content {
+    position: relative;
+}
+
+.scrapbook-decoration {
+    position: absolute;
+    width: 85px;
+    height: 85px;
+    opacity: .78;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.scrapbook-decoration svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(2px 4px 4px rgba(90, 60, 35, .13));
+}
+
+.sunflower-left {
+    left: -35px;
+    top: 38%;
+    transform: rotate(-18deg);
+}
+
+.sunflower-right {
+    right: -35px;
+    top: 65%;
+    transform: rotate(15deg) scale(.8);
+}
+
+@media (max-width: 600px) {
+    .scrapbook-decoration {
+        width: 48px;
+        height: 48px;
+        opacity: .55;
+    }
+
+    .sunflower-left {
+        left: -8px;
+        top: 30%;
+    }
+
+    .sunflower-right {
+        right: -8px;
+        top: 75%;
+    }
+}
+
+/* =========================================
+   SPECIAL LETTER REVEAL
+========================================= */
+
+.letter-content {
+    animation: letterArrival .9s ease both;
+}
+
+@keyframes letterArrival {
+    from {
+        opacity: 0;
+        transform: translateY(22px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Envelope styling */
+
+#envelopeContainer {
+    position: relative;
+    filter: drop-shadow(0 12px 18px rgba(115, 76, 96, .15));
+    transition: filter .4s ease;
+}
+
+#envelopeContainer:hover {
+    filter: drop-shadow(0 16px 24px rgba(115, 76, 96, .22));
+}
+
+/* Reveal button */
+
+#revealLetterButton {
+    border: 1px solid rgba(189, 129, 159, .4);
+    box-shadow: 0 7px 18px rgba(132, 91, 116, .13);
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+#revealLetterButton:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 11px 23px rgba(132, 91, 116, .2);
+}
+
+/* Letter paper */
+
+#letterPaper {
+    border: 1px solid #eadbd4;
+    box-shadow:
+        0 8px 20px rgba(90, 60, 60, .08),
+        0 22px 55px rgba(90, 60, 60, .12);
+    background:
+        linear-gradient(rgba(255, 253, 249, .97), rgba(255, 250, 244, .98));
+}
+
+/* Soft decorative paper detail */
+
+#letterPaper::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 28px;
+    width: 2px;
+    height: 100%;
+    background: rgba(224, 177, 178, .22);
+    pointer-events: none;
+}
+
+@media (max-width: 600px) {
+    #letterPaper::before {
+        left: 15px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .letter-content {
+        animation: none;
+    }
+
+    #envelopeContainer,
+    #revealLetterButton {
+        transition: none;
+    }
+}
+
+/* =========================================
+   BIRTHDAY CELEBRATION AFTER POLAROIDS
+========================================= */
+
+.birthday-celebration {
+    margin: 25px auto 30px;
+    text-align: center;
+    animation: birthdayPop .9s cubic-bezier(.2,.8,.3,1) both;
+}
+
+.celebration-line,
+.celebration-main,
+.celebration-subtitle {
+    display: block;
+}
+
+.celebration-line {
+    color: #a66d7f;
+    font-family: var(--body-font);
+    font-size: .8rem;
+    font-weight: 900;
+    letter-spacing: 5px;
+    animation: birthdayFade .8s ease both;
+}
+
+.celebration-main {
+    margin-top: 5px;
+    color: #bd819f;
+    font-family: var(--heading-font);
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 700;
+    line-height: 1;
+    text-shadow: 2px 3px 0 rgba(232, 183, 203, .3);
+    animation: birthdayBounce 1.1s ease both;
+}
+
+.celebration-subtitle {
+    margin-top: 12px;
+    color: #917b8c;
+    font-family: var(--hand-font);
+    font-size: 1.5rem;
+}
+
+@keyframes birthdayPop {
+    from {
+        opacity: 0;
+        transform: scale(.75) translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes birthdayFade {
+    from { opacity: 0; letter-spacing: 10px; }
+    to { opacity: 1; letter-spacing: 5px; }
+}
+
+@keyframes birthdayBounce {
+    0% { transform: scale(.6); }
+    65% { transform: scale(1.12); }
+    100% { transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .birthday-celebration,
+    .celebration-line,
+    .celebration-main {
+        animation: none;
+    }
+}
+
+/* =========================================
+   PASTEL BIRTHDAY CONFETTI
+========================================= */
+
+.confetti-piece {
+    position: fixed;
+    top: -20px;
+    width: 9px;
+    height: 15px;
+    z-index: 9999;
+    pointer-events: none;
+    border-radius: 2px;
+    animation: confettiFall linear forwards;
+}
+
+.confetti-piece:nth-child(3n) {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+}
+
+.confetti-piece:nth-child(4n) {
+    width: 6px;
+    height: 17px;
+}
+
+@keyframes confettiFall {
+    0% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translate3d(var(--confetti-drift), 110vh, 0)
+            rotate(var(--confetti-rotation));
+        opacity: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .confetti-piece {
+        display: none;
+        animation: none;
+    }
+}
+
+/* =========================================
+   LITTLE SUNFLOWER SHOWER
+========================================= */
+
+.sunflower-shower-piece {
+    position: fixed;
+    top: -45px;
+    width: 32px;
+    height: 32px;
+    z-index: 9998;
+    pointer-events: none;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='%23e8bd61'%3E%3Cellipse cx='50' cy='17' rx='9' ry='19'/%3E%3Cellipse cx='50' cy='83' rx='9' ry='19'/%3E%3Cellipse cx='17' cy='50' rx='19' ry='9'/%3E%3Cellipse cx='83' cy='50' rx='19' ry='9'/%3E%3Cellipse cx='27' cy='27' rx='9' ry='19' transform='rotate(-45 27 27)'/%3E%3Cellipse cx='73' cy='27' rx='9' ry='19' transform='rotate(45 73 27)'/%3E%3Cellipse cx='27' cy='73' rx='9' ry='19' transform='rotate(45 27 73)'/%3E%3Cellipse cx='73' cy='73' rx='9' ry='19' transform='rotate(-45 73 73)'/%3E%3C/g%3E%3Ccircle cx='50' cy='50' r='17' fill='%2379542f'/%3E%3C/svg%3E") center / contain no-repeat;
+    animation: sunflowerFall linear forwards;
+}
+
+@keyframes sunflowerFall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .sunflower-shower-piece {
+        display: none;
+        animation: none;
+    }
+}
+
+/* =========================================
+   POLAROID PROGRESS PETALS
+========================================= */
+
+.polaroid-progress-petals {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin: 18px auto 28px;
+}
+
+.polaroid-progress-petals span {
+    width: 11px;
+    height: 18px;
+    border-radius: 100% 0 100% 0;
+    background: #e9dce1;
+    transform: rotate(-35deg);
+    transition: background .4s ease, transform .4s ease;
+}
+
+.polaroid-progress-petals span.active {
+    background: #bd819f;
+    transform: rotate(0deg) scale(1.2);
+    box-shadow: 0 2px 7px rgba(189, 129, 159, .25);
+}
+
+@media (max-width: 480px) {
+    .polaroid-progress-petals {
+        gap: 10px;
+    }
+}
+
+/* =========================================
+   BIRTHDAY WELCOME — PETAL MAGIC
+========================================= */
+
+.birthday-content {
+    position: relative;
+    z-index: 2;
+}
+
+.birthday-flower {
+    animation: birthdayFlowerFloat 4s ease-in-out infinite;
+    transform-origin: center;
+}
+
+@keyframes birthdayFlowerFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(-5deg);
+    }
+
+    50% {
+        transform: translateY(-12px) rotate(5deg);
+    }
+}
+
+.birthday-title {
+    animation: welcomeTitle 1s ease both;
+}
+
+@keyframes welcomeTitle {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#exploreButton {
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+#exploreButton:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 22px rgba(132, 91, 116, .2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .birthday-flower,
+    .birthday-title {
+        animation: none;
+    }
+
+    #exploreButton {
+        transition: none;
+    }
+}
+
+/* =========================================
+   TWENTY ONE PETALS — WELCOMING ENTRANCE
+========================================= */
+
+/* Soft, dreamy opening background */
+
+.entrance-screen {
+    background:
+        radial-gradient(ellipse at 15% 20%, rgba(232, 183, 203, .22), transparent 38%),
+        radial-gradient(ellipse at 85% 80%, rgba(200, 182, 220, .2), transparent 38%),
+        linear-gradient(145deg, #fff8f6, #fff1f5 55%, #f7f0fa);
+}
+
+/* Invitation card */
+
+.invitation-card {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    border: 1px solid rgba(224, 190, 199, .75);
+    border-radius: 28px;
+    background: rgba(255, 253, 250, .94);
+    box-shadow:
+        0 8px 20px rgba(132, 91, 116, .06),
+        0 25px 65px rgba(132, 91, 116, .13),
+        inset 0 0 0 7px rgba(249, 229, 237, .3);
+}
+
+/* Delicate inner border */
+
+.invitation-card::before {
+    content: "";
+    position: absolute;
+    inset: 12px;
+    border: 1px dashed rgba(189, 129, 159, .3);
+    border-radius: 19px;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Main invitation content */
+
+.invitation-content {
+    position: relative;
+    z-index: 1;
+}
+
+.invitation-content .eyebrow {
+    color: #b27d95;
+    letter-spacing: 3px;
+    font-size: .76rem;
+}
+
+.invitation-content h1 {
+    color: #9e6c86;
+    text-shadow: 1px 2px 0 rgba(232, 183, 203, .2);
+}
+
+.invitation-content h2 {
+    color: #bd819f;
+}
+
+/* Sunflower centerpiece */
+
+.sunflower-decoration {
+    filter: drop-shadow(0 5px 7px rgba(132, 91, 116, .12));
+    animation: entranceFlowerFloat 4s ease-in-out infinite;
+}
+
+@keyframes entranceFlowerFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(-3deg);
+    }
+
+    50% {
+        transform: translateY(-7px) rotate(3deg);
+    }
+}
+
+/* Background flower decorations */
+
+.decorative-flower {
+    color: #d6a5b9;
+    opacity: .55;
+    filter: drop-shadow(0 3px 5px rgba(189, 129, 159, .12));
+}
+
+/* Invitation buttons */
+
+.invitation-actions button {
+    border-radius: 50px;
+    box-shadow: 0 5px 13px rgba(132, 91, 116, .12);
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.invitation-actions button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 9px 19px rgba(132, 91, 116, .17);
+}
+
+/* Footer */
+
+.entrance-footer {
+    color: #a58a99;
+    letter-spacing: 1px;
+}
+
+/* Dark mode adjustments */
+
+body.dark-mode .entrance-screen {
+    background:
+        radial-gradient(ellipse at 15% 20%, rgba(189, 129, 159, .13), transparent 38%),
+        radial-gradient(ellipse at 85% 80%, rgba(150, 128, 180, .14), transparent 38%),
+        linear-gradient(145deg, #29232d, #332632 55%, #282432);
+}
+
+body.dark-mode .invitation-card {
+    background: rgba(53, 43, 55, .96);
+    border-color: rgba(189, 129, 159, .3);
+    box-shadow:
+        0 15px 45px rgba(0, 0, 0, .2),
+        inset 0 0 0 7px rgba(189, 129, 159, .06);
+}
+
+body.dark-mode .invitation-card::before {
+    border-color: rgba(232, 183, 203, .22);
+}
+
+body.dark-mode .invitation-content h1 {
+    color: #edc4d5;
+}
+
+body.dark-mode .invitation-content h2 {
+    color: #d9a8c0;
+}
+
+@media (max-width: 480px) {
+    .invitation-card {
+        border-radius: 23px;
+    }
+
+    .invitation-card::before {
+        inset: 9px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .sunflower-decoration {
+        animation: none;
+    }
+
+    .invitation-actions button {
+        transition: none;
+    }
+}
+
+
+/* =========================================
+   DARK MODE — POLAROID LOVE WALL
+========================================= */
+
+body.dark-mode #gardenScreen {
+    background:
+        radial-gradient(ellipse at 15% 15%, rgba(189, 129, 159, .10), transparent 40%),
+        radial-gradient(ellipse at 85% 85%, rgba(150, 128, 180, .12), transparent 40%),
+        linear-gradient(145deg, #28232d, #332936 55%, #292431);
+}
+
+body.dark-mode .garden-title,
+body.dark-mode .garden-title span {
+    color: #f0d4e1;
+}
+
+body.dark-mode .garden-description,
+body.dark-mode .garden-eyebrow {
+    color: #c6a9bb;
+}
+
+body.dark-mode .polaroid-intro {
+    color: #d6b5c7;
+    border-color: rgba(232, 183, 203, .25);
+}
+
+body.dark-mode .polaroid-wall {
+    background: radial-gradient(circle, rgba(189, 129, 159, .08), transparent 70%);
+}
+
+body.dark-mode .polaroid-card {
+    background: linear-gradient(145deg, #49404b, #3d3542);
+    border-color: rgba(232, 183, 203, .22);
+    box-shadow: 0 9px 25px rgba(0, 0, 0, .2);
+}
+
+body.dark-mode .polaroid-message {
+    color: #f4e6ed;
+}
+
+body.dark-mode .polaroid-caption {
+    color: #d6a9bf;
+    border-color: rgba(232, 183, 203, .2);
+}
+
+body.dark-mode .polaroid-doodle {
+    color: #e5b4ca;
+}
+
+body.dark-mode .polaroid-card.collected {
+    background: linear-gradient(145deg, #514252, #463747);
+    border-color: rgba(232, 183, 203, .45);
+}
+
+body.dark-mode .flower-progress,
+body.dark-mode .flower-message {
+    color: #e4cbd8;
+}
+
+body.dark-mode .polaroid-progress-petals span {
+    background: #554653;
+}
+
+body.dark-mode .polaroid-progress-petals span.active {
+    background: #d99bb8;
+}
+
+body.dark-mode .letter-unlock {
+    color: #f1dce7;
+}
+
+body.dark-mode .letter-unlock h2 {
+    color: #e8b7cb;
+}
+
+body.dark-mode .letter-unlock button {
+    background: #bd819f;
+    color: #fffafc;
+}
+
+
+/* =========================================
+   DARK MODE — SPECIAL LETTER PAGE
+========================================= */
+
+body.dark-mode .letter-screen {
+    background:
+        radial-gradient(ellipse at 15% 20%, rgba(189, 129, 159, .12), transparent 40%),
+        radial-gradient(ellipse at 85% 80%, rgba(150, 128, 180, .12), transparent 40%),
+        linear-gradient(145deg, #28232d, #332936 55%, #292431);
+}
+
+body.dark-mode .letter-heading,
+body.dark-mode .letter-intro {
+    color: #f0d4e1;
+}
+
+body.dark-mode #envelopeContainer {
+    filter: drop-shadow(0 12px 18px rgba(0, 0, 0, .3));
+}
+
+body.dark-mode #revealLetterButton {
+    background: #bd819f;
+    color: #fffafc;
+    border-color: #d6a5b9;
+}
+
+body.dark-mode #letterPaper {
+    background: linear-gradient(145deg, #403744, #493d49);
+    border-color: rgba(232, 183, 203, .3);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, .25);
+    color: #f5e8ee;
+}
+
+body.dark-mode #letterPaper::before {
+    background: rgba(232, 183, 203, .35);
+}
+
+body.dark-mode #letterPaper h2 {
+    color: #f0c5d8;
+}
+
+body.dark-mode .handwritten-message {
+    color: #f0e0e8;
+}
+
+body.dark-mode .letter-paper p,
+body.dark-mode .letter-paper span {
+    color: #ead8e2;
+}
+
+body.dark-mode .letter-paper strong {
+    color: #f0bfd3;
+}
+/* =========================================
+   LITTLE BIRTHDAY CAKE DECORATIONS
+========================================= */
+
+.cake-decoration {
+    position: absolute;
+    width: 75px;
+    height: 75px;
+    z-index: 0;
+    pointer-events: none;
+    animation: cakeFloat 4s ease-in-out infinite;
+}
+
+.cake-one {
+    left: 12%;
+    bottom: 17%;
+    transform: rotate(-9deg);
+}
+
+.cake-two {
+    right: 12%;
+    top: 17%;
+    transform: rotate(9deg);
+    animation-delay: -2s;
+}
+
+.cake-body {
+    position: absolute;
+    width: 48px;
+    height: 30px;
+    left: 13px;
+    bottom: 13px;
+    border-radius: 8px 8px 5px 5px;
+    background: #e8b7cb;
+    border-bottom: 5px solid #bd819f;
+    box-shadow: inset 0 5px 0 rgba(255,255,255,.45);
+}
+
+.cake-top {
+    position: absolute;
+    width: 52px;
+    height: 13px;
+    left: 11px;
+    bottom: 39px;
+    border-radius: 50%;
+    background: #fff0e5;
+    border: 2px solid #e8b7cb;
+    z-index: 2;
+}
+
+.cake-candle {
+    position: absolute;
+    width: 5px;
+    height: 17px;
+    left: 35px;
+    bottom: 49px;
+    border-radius: 3px;
+    background: repeating-linear-gradient(
+        135deg,
+        #bd819f 0 3px,
+        #fff4f7 3px 6px
+    );
+    z-index: 3;
+}
+
+.cake-candle::before {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 11px;
+    background: #e8bd61;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    top: -12px;
+    left: -2px;
+    box-shadow: 0 0 9px rgba(232,189,97,.4);
+}
+
+.cake-plate {
+    position: absolute;
+    width: 65px;
+    height: 7px;
+    left: 5px;
+    bottom: 7px;
+    border-radius: 50%;
+    background: #c8b6dc;
+}
+
+@keyframes cakeFloat {
+    0%, 100% {
+        translate: 0 0;
+    }
+    50% {
+        translate: 0 -8px;
+    }
+}
+
+/* Dark mode */
+body.dark-mode .cake-body {
+    background: #bd819f;
+    border-bottom-color: #965f7d;
+}
+
+body.dark-mode .cake-top {
+    background: #493a4a;
+    border-color: #bd819f;
+}
+
+body.dark-mode .cake-plate {
+    background: #9680b4;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .cake-decoration {
+        transform: scale(.72);
+        opacity: .8;
+    }
+
+    .cake-one {
+        left: 1%;
+        bottom: 9%;
+    }
+
+    .cake-two {
+        right: 1%;
+        top: 10%;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .cake-decoration {
+        animation: none;
+    }
+}
